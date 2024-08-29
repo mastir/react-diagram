@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect} from "react";
+import {createContext, useContext, useEffect} from "react";
 import {CanvasContext} from "./Canvas";
 
 export const NodeContext = createContext(null);

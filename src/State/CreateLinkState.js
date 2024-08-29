@@ -22,7 +22,6 @@ export class CreateLinkState extends State {
                         this.link.ports = [state.port.model, port.model];
                         this.engine.links.redraw();
                         state.port.onConnect(port.model, this.link);
-                        port.onConnect(state.port.model, this.link);
                     } else {
                         this.engine.links.remove(this.link);
                     }

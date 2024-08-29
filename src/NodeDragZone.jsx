@@ -1,4 +1,4 @@
-import {useContext, useEffect} from "react";
+import  {useContext} from "react";
 import {NodeContext} from "./Node";
 import {CanvasContext} from "./Canvas";
 

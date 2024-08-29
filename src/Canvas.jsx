@@ -3,7 +3,7 @@ import {EngineContext} from "./Diagram";
 
 export const CanvasContext = createContext(null);
 
-export function Canvas({children,width=4000,height=4000}) {
+export function Canvas({children,width=4000,height=4000,getLinks}) {
     const engine = useContext(EngineContext);
     const model = engine.canvas;
     model.setSize(width, height);
