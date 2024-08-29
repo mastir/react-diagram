@@ -1,15 +1,19 @@
 {
   "name": "@mastir/react-diagram",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Simple process flow and flow chart react diagram",
   "source": "src/index.js",
-  "main": "./dist/react-diagram.cjs",
+  "type": "module",
+  "main": "./dist/react-diagram.js",
   "module": "./dist/react-diagram.module.js",
   "umpkg": "./dist/react-diagram.umd.js",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
+    "build": "microbundle --jsx jsx --jsxImportSource react --globals react/jsx-runtime=jsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,18 +1,18 @@
-import {createContext, useContext, useEffect} from "react";
+import {createContext, useContext} from "react";
 import {CanvasContext} from "./Canvas";
 
 export const NodeContext = createContext(null);
 
-export function Node({node, children}) {
+export function Node({model, children}) {
     const canvas = useContext(CanvasContext);
-    let [top, left] = canvas.pointToOffset(node.x,node.y);
+    let [left, top] = canvas.pointToOffset(model.x,model.y);
     return <div
         className={'rd-node'}
         data-rg={'node'}
         style={{position:"absolute",top,left}}
-        ref={e => canvas.setNodeRef(node, e) }
+        ref={e => canvas.setNodeRef(model, e) }
     >
-        <NodeContext.Provider value={node}>
+        <NodeContext.Provider value={model}>
             {children}
         </NodeContext.Provider>
     </div>;

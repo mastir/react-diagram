@@ -18,10 +18,11 @@ export class CreateLinkState extends State {
                     canLink = canLink && port.canConnect(state.port.model);
                     canLink = canLink && state.port.canConnect(port.model);
                     if (canLink) {
-                        this.link.setTargetPoint(...this.calcPortConnectorLocation(elem));
-                        this.link.ports = [state.port.model, port.model];
+                        this.link.setTargetPoint(this.calcPortConnectorLocation(elem, port.linkOffset));
+                        this.link.target = port.model;
+                        this.link.offsets[1] = port.linkOffset;
                         this.engine.links.redraw();
-                        state.port.onConnect(port.model, this.link);
+                        state.port.onConnect(port.model, this.link.model);
                     } else {
                         this.engine.links.remove(this.link);
                     }
@@ -32,29 +33,32 @@ export class CreateLinkState extends State {
         },{
             event: 'mousemove',
             handle: (event,state)=>{
-                this.link.setTargetPoint(event.offsetX, event.offsetY);
-                this.engine.links.redraw();
+                this.link.setTargetPoint( [event.offsetX, event.offsetY]);
+                (this.link.redraw  || this.engine.links.redraw)();
             }
         }];
 
     }
 
-    calcPortConnectorLocation(port){
+    calcPortConnectorLocation(port, offset = [0,0]){
 
         let n = this.engine.canvas.node.getBoundingClientRect();
         let p = port.getBoundingClientRect();
 
-        // let ox = node.x + node.width / 2 > p.x ? p.width : 0;
-        let ox = 0;
-        let x = (p.x - n.x) / this.engine.canvas.zoom + ox;
-        let y = (p.y - n.y + p.height / 2) / this.engine.canvas.zoom;
 
-        return [ x, y, ox === 0 ? x - 50 : x + 50, y ];
+
+        let ox = 0;
+        let x = (p.x - n.x + (offset[0] + 1) * p.height / 2 ) / this.engine.canvas.zoom;
+        let y = (p.y - n.y + (offset[1] + 1) * p.height / 2 ) / this.engine.canvas.zoom;
+
+        return [x, y];
     }
 
     activate(event,state) {
-        const p = this.calcPortConnectorLocation(state.ref);
-        this.link = new LinkModel(...p);
+        let model = state.port.createLink();
+        if (!model) return this.prevState();
+        const p = this.calcPortConnectorLocation(state.ref, state.port.linkOffset);
+        this.link = new LinkModel(model, state.port.model, p, state.port.linkOffset);
         this.engine.links.add(this.link);
         this.engine.canvas.lockInnerEvents(true);
     }

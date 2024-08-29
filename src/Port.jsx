@@ -3,11 +3,13 @@ import {NodeContext} from "./Node";
 import {CanvasContext} from "./Canvas";
 
 export function Port({
-     port,
+     model,
      children,
      style={},
+     linkOffset = [0,0],
      canConnect=(port, link)=>true,
-     onConnect=(port, link)=>{}
+     onConnect=(port, link)=>{link.target = port},
+     createLink=()=>({source: model}),
 }) {
     const node = useContext(NodeContext);
     const canvas = useContext(CanvasContext);
@@ -15,7 +17,7 @@ export function Port({
     return <div
         className={'rd-port'}
         data-rg={'port'}
-        ref={e=>canvas.setNodePortRef(node,port,e,onConnect,canConnect)}
+        ref={ref=>canvas.setRef('port', {model, parent: node, ref, onConnect, canConnect, createLink, linkOffset})}
         style={{...style,display:"inline-block", lineHeight:0}}
     >{children}</div>;
 }

@@ -16,9 +16,5 @@ export class LinkListModel {
 
     }
 
-    onRegister(engine) {
-        engine.links = this;
-    }
-
 
 }

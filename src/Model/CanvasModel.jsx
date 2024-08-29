@@ -76,10 +76,6 @@ export class CanvasModel {
         return this.setRef('node', {model: node, ref});
     }
 
-    setNodePortRef(node, port, ref, onConnect, canConnect) {
-        return this.setRef('port', {model: port, parent: node, ref, onConnect, canConnect});
-    }
-
     setNodeDragRef(node, ref, onMove) {
         return this.setRef('node-drag', {model:node, ref, onMove});
     }

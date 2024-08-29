@@ -2,14 +2,18 @@
 
 export class LinkModel {
 
+    source = null;
+    target = null;
 
-    constructor(sx,sy,ox=sx,oy=sy) {
-        this.target = this.source = [[sx, sy], [ox,oy]];
+    constructor(model, source, xy, offset=[0,0]) {
+        this.model = model;
+        this.source = source;
+        this.points = [xy, xy];
+        this.offsets = [offset, offset.map(o=>0-o)];
     }
 
-    setTargetPoint(x,y,ox=x,oy=y){
-        this.target = [[x,y], [ox,oy]];
+    setTargetPoint(p){
+        this.points[1] = p;
     }
-
 
 }
