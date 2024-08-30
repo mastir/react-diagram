@@ -3,9 +3,9 @@ import {CanvasContext} from "./Canvas";
 
 export const NodeContext = createContext(null);
 
-export function Node({model, children}) {
+export function Node({model, position:[x, y], children}) {
     const canvas = useContext(CanvasContext);
-    let [left, top] = canvas.pointToOffset(model.x,model.y);
+    let [left, top] = canvas.pointToOffset(x,y);
     return <div
         className={'rd-node'}
         data-rg={'node'}

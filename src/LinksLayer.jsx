@@ -3,7 +3,7 @@ import {EngineContext} from "./Diagram";
 import {Link} from "./Link.jsx";
 
 
-export function LinksLayer({links=[], component=Link}) {
+export function LinksLayer({links=[], component=Link,getLinkStyle}) {
     const engine = useContext(EngineContext);
     const [items, setLinks] = useState(links);
     const [redraw, setDraw] = useState(false);
@@ -24,6 +24,7 @@ export function LinksLayer({links=[], component=Link}) {
                 offsets={l.offsets}
                 source={l.source}
                 target={l.target}
+                style={getLinkStyle(l)}
                 redraw={!l.target ? redraw : null} />
         )}
     </svg>;

@@ -2,7 +2,7 @@ import  {useContext} from "react";
 import {NodeContext} from "./Node";
 import {CanvasContext} from "./Canvas";
 
-export function NodeDragZone({children, onMove, ...props}) {
+export function NodeDragZone({children, onMove=(x,y)=>{}, ...props}) {
 
     const node = useContext(NodeContext);
     const canvas = useContext(CanvasContext);

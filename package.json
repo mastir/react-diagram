@@ -1,6 +1,6 @@
 {
   "name": "@mastir/react-diagram",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Simple process flow and flow chart react diagram",
   "source": "src/index.js",
   "type": "module",
@@ -13,7 +13,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "microbundle --jsx jsx --jsxImportSource react --globals react/jsx-runtime=jsx",
+    "build": "microbundle --jsx jsx --jsxImportSource react/jsx-runtime",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
