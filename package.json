@@ -1,6 +1,6 @@
 {
   "name": "@mastir/react-diagram",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Simple process flow and flow chart react diagram",
   "source": "src/index.js",
   "type": "module",

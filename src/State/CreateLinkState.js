@@ -1,7 +1,16 @@
 import {State} from "../Core/State";
 import {LinkModel} from "../Model/LinkModel";
 
+export const LINK_FILTER = {
+    ONLY_UNIQUE: 0,
+    ALLOW_REVERSE: 1,
+    ALLOW_DUPLICATE: 2,
+}
+
 export class CreateLinkState extends State {
+
+    linkFilter = LINK_FILTER.ONLY_UNIQUE;
+
     constructor() {
         super();
         this.name = 'createLink';
@@ -17,7 +26,8 @@ export class CreateLinkState extends State {
                     let canLink = port && state.port.model !== port.model;
                     canLink = canLink && port.canConnect(state.port.model);
                     canLink = canLink && state.port.canConnect(port.model);
-                    if (canLink) {
+                    canLink = canLink && this.filterLink([state.port.model, port.model]);
+                    if ( canLink ) {
                         this.link.setTargetPoint(this.calcPortConnectorLocation(elem, port.linkOffset));
                         this.link.target = port.model;
                         this.link.offsets[1] = port.linkOffset;
@@ -52,6 +62,21 @@ export class CreateLinkState extends State {
         let y = (p.y - n.y + (offset[1] + 1) * p.height / 2 ) / this.engine.canvas.zoom;
 
         return [x, y];
+    }
+
+    filterLink(ports){
+        if (this.linkFilter === LINK_FILTER.NONE) return true;
+        const fields = ['source', 'target'];
+        let cond = l => {
+            let idx = fields.map(f => ports.indexOf(l[f]));
+            return idx.indexOf(-1) === -1 && idx[0] !== idx[1];
+        }
+        if (this.linkFilter === LINK_FILTER.ALLOW_REVERSE){
+            cond = link => link.source === ports[0] && link.target === ports[1]
+        }
+        return !this.engine.links.items.find( cond );
+
+
     }
 
     activate(event,state) {

@@ -4,11 +4,15 @@ This project created as simple replacement for [projectstorm/react-diagrams](htt
 
 React diagram is a collection of base components to create flow chart or process flow.
 
+
+[Live demo](https://codesandbox.io/p/sandbox/lingering-architecture-sv4743)
+
 # What is included
 
  - React components to implement base logic: Diagram, Node, Port, NodeDragZone
  - callbacks to handle business logic: Port.canConnect, Port.onConnect, NodeDragZone.onMove
  - base state handlers for: scroll, zoom, drag view, move nodes, connect ports.
+
 
 # How to use
 
