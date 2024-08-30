@@ -65,6 +65,7 @@ export class DragNodeState extends State {
         this.engine.canvas.lockInnerEvents(false);
         this.engine.canvas.setCursor(this.old_cursor);
         delete this.old_cursor;
+        delete this.links;
     }
 
     findNodeLinks(type, ports){
