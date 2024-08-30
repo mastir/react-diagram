@@ -98,7 +98,8 @@ export class CanvasModel {
                 return current;
             }
             this.refs[type].splice(idx, 1);
-            // this.engine && this.engine.trigger('remove_' + type, current);
+            const e = 'on_remove_' + type.replace(/[^a-zA-Z0-9]+/g, '_');
+            this.engine && this.engine.trigger(e, current);
         } else {
             if (!current) {
                 current = {ref, ...opt};

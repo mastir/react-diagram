@@ -16,5 +16,12 @@ export class LinkListModel {
 
     }
 
+    on_remove_port(port){
+        const unlink = !!this.items.find(l => l.source === port.model || l.target === port.model);
+        if (unlink){
+            this.update(items => items.filter(l => !(l.source === port.model || l.target === port.model)));
+        }
+    }
+
 
 }
