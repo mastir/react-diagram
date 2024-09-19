@@ -22,21 +22,6 @@
     "type": "git",
     "url": "git+https://github.com/mastir/react-diagram.git"
   },
-  "keywords": [
-    "react",
-    "diagram",
-    "diagrams",
-    "web",
-    "flow",
-    "chart",
-    "flowchart",
-    "process",
-    "nodes",
-    "port",
-    "canvas",
-    "links",
-    "connect"
-  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
