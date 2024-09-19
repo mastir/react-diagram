@@ -1,12 +1,10 @@
-import React from 'react';
-export * from "./Model/EngineModel";
-export * from "./Diagram";
-export * from "./Node";
-export * from "./Port";
-export * from "./NodeDragZone";
-export * from "./Core/State";
-export * from "./State/DefaultState";
-export * from "./State/CreateLinkState";
-export * from "./State/DragNodeState";
-export * from "./State/DragCanvasState";
-export * from "./State/ZoomHandler";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React>
+    <App />
+  </React>
+);

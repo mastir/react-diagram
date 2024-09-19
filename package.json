@@ -12,10 +12,12 @@
     "README.md",
     "LICENSE"
   ],
-  "scripts": {
-    "build": "microbundle --jsx jsx --jsxImportSource react/jsx-runtime",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Yevhen Pochekuiev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mastir/react-diagram/issues"
   },
+  "homepage": "https://github.com/mastir/react-diagram#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mastir/react-diagram.git"
@@ -35,20 +37,28 @@
     "links",
     "connect"
   ],
-  "author": "Yevhen Pochekuiev",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mastir/react-diagram/issues"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "homepage": "https://github.com/mastir/react-diagram#readme",
-  "devDependencies": {
-    "babel-loader": "^9.0.0",
-    "microbundle": "^0.15.1",
-    "webpack": "^5.0.0",
-    "webpack-cli": "^5.0.0"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "react": "^18.0.0",
-    "webpack-node-externals": "^3.0.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
