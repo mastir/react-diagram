@@ -20,6 +20,17 @@ React diagram is a collection of base components to create flow chart or process
 # How to use
 
 ```js
+import {
+  CreateLinkState,
+  DefaultState,
+  Diagram,
+  DragCanvasState,
+  DragNodeState,
+  EngineModel,
+  ZoomHandler,
+} from "@mastir/react-diagram";
+import { Node, NodeDragZone, Port } from "@mastir/react-diagram";
+
 
     const engine = useMemo(() => {
         const engine = new EngineModel();
