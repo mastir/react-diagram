@@ -5,7 +5,7 @@ This project created as simple replacement for [projectstorm/react-diagrams](htt
 React diagram is a collection of base components to create flow chart or process flow.
 
 
-[Live demo](https://codesandbox.io/p/sandbox/lingering-architecture-sv4743)
+[Live demo](https://codesandbox.io/p/sandbox/react-diagram-sv4743)
 
 # What is included
 
@@ -13,6 +13,9 @@ React diagram is a collection of base components to create flow chart or process
  - callbacks to handle business logic: Port.canConnect, Port.onConnect, NodeDragZone.onMove
  - base state handlers for: scroll, zoom, drag view, move nodes, connect ports.
 
+# Setup
+
+`npm i --save @mastir/react-diagram`
 
 # How to use
 
@@ -64,7 +67,7 @@ React diagram is a collection of base components to create flow chart or process
 
 ## User defined types
 
-TNode, TPort, TLink - any object representing element, please avoid object creation or duplication
+TNode, TPort, TLink - unique `string` or any `object` representing element ( you should  avoid object recreation or duplication )
 
 ## Diagram
 
@@ -92,15 +95,19 @@ Container for any element placed in Diagram
 
 Container for connectors in Node
 
-| prop   | type  | description                            |
-|--------|-------|----------------------------------------|
-| model* | TPort | any object represented by this element |
+| prop       | type                    | description                                                                         |
+|------------|-------------------------|-------------------------------------------------------------------------------------|
+| model*     | TPort                   | any object represented by this element                                              |
+| linkOffset | [number,number]         | link connection point ([-1,1] = left bottom, [0,-1] = center,top), default = [0, 0] |
+| createLink | ()=>TLink               | new TLink factory, created from this port                                           |
+| canConnect | (TPort, TLink)=>boolean | default: ()=>true                                                                   |
+| onConnect  | (TPort, TLink)=>void    | callback for new link connection                                                    |
 
 ## NodeDragZone
 
-| prop   | type        | description                    |
-|--------|-------------|--------------------------------|
-| onMove  | (x,y)=>void | callback for node moved action |
+| prop     | type        | description                |
+|----------|-------------|----------------------------|
+| onMove   | (x,y)=>void | callback for node move end |
 
 ## LinksLayer
 
