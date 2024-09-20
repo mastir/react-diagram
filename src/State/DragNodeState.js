@@ -30,7 +30,7 @@ export class DragNodeState extends State {
                 this.ref.style.top = this.target_pos[1]+'px';
                 if (!this.links) {
                     //detect ports
-                    const ports = this.engine.canvas.refs.port.filter(p => p.parent === state.node.model).map(p => p.model);
+                    const ports = (this.engine.canvas.refs.port||[]).filter(p => p.parent === state.node.model).map(p => p.model);
                     //move links
                     this.links = {
                         source: this.findNodeLinks('source', ports),
